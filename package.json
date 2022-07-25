@@ -1,0 +1,31 @@
+{
+  "name": "byteplug-endpoints",
+  "version": "0.0.1",
+  "description": "A HTTP client to work with Byteplug endpoints easily.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intjelic/byteplug-endpoints.git"
+  },
+  "keywords": [
+    "http-client",
+    "javascript",
+    "nodejs",
+    "byteplug",
+    "endpoints"
+  ],
+  "author": {
+    "name" : "Jonathan De Wachter ",
+    "email" : "dewachter.jonathan@gmail.com",
+    "url" : "https://www.intjelic.me/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/intjelic/byteplug-endpoints/issues"
+  },
+  "homepage": "https://www.intjelic.me/projects/byteplug-endpoints"
+}
