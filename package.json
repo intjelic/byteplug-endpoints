@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/intjelic/byteplug-endpoints/issues"
   },
-  "homepage": "https://www.intjelic.me/projects/byteplug-endpoints"
+  "homepage": "https://www.intjelic.me/projects/byteplug-endpoints",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }
