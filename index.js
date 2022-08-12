@@ -11,14 +11,24 @@ import axios from "axios"
 class EndpointError extends Error {}
 
 function do_request_endpoint(endpoints, endpoint, url, document, token) {
+
   var configs = {
     baseURL: endpoints.baseURL,
     timeout: endpoints.timeout
   }
 
-  if (token !== undefined) {
-    configs['headers'] = {'Authorization': `Bearer ${token}`}
+  var headers = {}
+
+  if (document !== undefined) {
+    headers['Content-Type'] = 'application/json'
   }
+
+  if (token !== undefined) {
+    headers['Authorization'] = `Bearer ${token}`
+  }
+
+  configs['headers'] = headers
+
 
   axios.post(url, document, configs).
     then((response) => {
