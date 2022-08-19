@@ -19,9 +19,9 @@
     "endpoints"
   ],
   "author": {
-    "name" : "Jonathan De Wachter ",
-    "email" : "dewachter.jonathan@gmail.com",
-    "url" : "https://www.intjelic.me/"
+    "name": "Jonathan De Wachter ",
+    "email": "dewachter.jonathan@gmail.com",
+    "url": "https://www.intjelic.me/"
   },
   "license": "MIT",
   "bugs": {
@@ -32,6 +32,7 @@
     "axios": "^0.27.2"
   },
   "devDependencies": {
-    "ava": "^4.3.1"
+    "ava": "^4.3.1",
+    "express": "^4.18.1"
   }
 }
