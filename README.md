@@ -12,14 +12,14 @@ npm install byteplug-endpoints
 ```javascript
 import Endpoints from 'byteplug-endpoints'
 
-var endpoints = Endpoint("http://api.my-company.com")
+var endpoints = new Endpoints("http://api.my-company.com")
 
 var endpoint = endpoints.endpoint("foo")
 endpoint.response = function(document) {
     // Do something with response and its document.
 }
 
-document = {
+const document = {
     foo: "bar",
     bar: "foo"
 }
@@ -77,7 +77,7 @@ If the endpoint requires authentication, pass the token after the document. If
 the endpoint operates on an item of a collection, you must pass the item ID as
 well. For instance:
 
-```
+```javascript
 item_id = "42"
 my_collection_endpoint.request(item_id, document, token)
 ```
