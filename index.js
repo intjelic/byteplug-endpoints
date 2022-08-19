@@ -10,7 +10,7 @@ import axios from "axios"
 
 class EndpointError extends Error {}
 
-function do_request_endpoint(endpoints, endpoint, url, document, token) {
+function doRequestEndpoint(endpoints, endpoint, url, document, token) {
 
   var configs = {
     baseURL: endpoints.baseURL,
@@ -53,8 +53,8 @@ function do_request_endpoint(endpoints, endpoint, url, document, token) {
       }
     })
     .catch((error) => {
-      if (endpoint.any_error != null) {
-        endpoint.any_error(error)
+      if (endpoint.anyError != null) {
+        endpoint.anyError(error)
       }
 
       if (error.response.status == 401) {
@@ -71,14 +71,14 @@ function do_request_endpoint(endpoints, endpoint, url, document, token) {
       }
       else if (kind == 'client-side-error') {
         // TODO; More things to do here.
-        if (endpoint.client_error != null) {
-          endpoint.client_error(error.response.data)
+        if (endpoint.clientError != null) {
+          endpoint.clientError(error.response.data)
         }
       }
       else if (kind == 'server-side-error') {
         // TODO; More things to do here.
-        if (endpoint.server_error != null) {
-          endpoint.server_error(error.response.data)
+        if (endpoint.serverError != null) {
+          endpoint.serverError(error.response.data)
         }
       }
       else {
@@ -92,10 +92,10 @@ class Endpoint {
     this.response = null
     this.errors = {}
 
-    this.client_error = null
-    this.server_error = null
+    this.clientError = null
+    this.serverError = null
 
-    this.any_error = null
+    this.anyError = null
   }
 }
 
@@ -110,13 +110,13 @@ class Endpoints {
 
     var endpoint = new Endpoint()
     endpoint.request = function(document, token) {
-      do_request_endpoint(endpoints, this, path, document, token)
+      doRequestEndpoint(endpoints, this, path, document, token)
     }
 
     return endpoint
   }
 
-  collection_endpoint(name, path, operate_on_item=false) {
+  collectionEndpoint(name, path, operate_on_item=false) {
     var endpoints = this // because 'this' variable will be shadowed later
 
     var endpoint = new Endpoint()
@@ -124,13 +124,13 @@ class Endpoints {
     if (operate_on_item) {
       endpoint.request = function(item, document, token) {
         var url = name + '/' + item + '/' + path
-        do_request_endpoint(endpoints, this, url, document, token)
+        doRequestEndpoint(endpoints, this, url, document, token)
       }
     }
     else {
       endpoint.request = function(document, token) {
         var url = name + '/' + path
-        do_request_endpoint(endpoints, this, url, document, token)
+        doRequestEndpoint(endpoints, this, url, document, token)
       }
     }
 
