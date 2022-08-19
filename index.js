@@ -53,12 +53,21 @@ function doRequestEndpoint(endpoints, endpoint, url, document, token) {
       }
     })
     .catch((error) => {
+      if (error.code === 'ECONNABORTED') {
+        if (endpoint.timeoutError != null) {
+          endpoint.timeoutError()
+        }
+      }
+
       if (endpoint.anyError != null) {
         endpoint.anyError(error)
       }
 
       if (error.response.status == 401) {
-        console.log("authentication failed; stopping here")
+        if (endpoint.authorizationError != null) {
+          endpoint.authorizationError()
+        }
+
         return
       }
 
@@ -92,8 +101,10 @@ class Endpoint {
     this.response = null
     this.errors = {}
 
+    this.authorizationError = null
     this.clientError = null
     this.serverError = null
+    this.timeoutError = null
 
     this.anyError = null
   }
