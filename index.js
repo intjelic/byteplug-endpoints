@@ -35,7 +35,7 @@ function do_request_endpoint(endpoints, endpoint, url, document, token) {
       var document = null
       if (response.status == 200) {
         if (response.headers['content-type'] != 'application/json') {
-          throw EndpointError("non-compliant endpoint; HTTP responses with document must be JSON")
+          throw new EndpointError("non-compliant endpoint; HTTP responses with document must be JSON")
         }
 
         document = response.data
@@ -44,7 +44,7 @@ function do_request_endpoint(endpoints, endpoint, url, document, token) {
         // Nothing to do (check if response.data is null ?).
       }
       else {
-        throw EndpointError("non-compliant endpoint; HTTP status code is not expected")
+        throw new EndpointError("non-compliant endpoint; HTTP status code is not expected")
       }
 
       // If the user wants to handle the response, execute their callback.
@@ -82,7 +82,7 @@ function do_request_endpoint(endpoints, endpoint, url, document, token) {
         }
       }
       else {
-        throw EndpointError("non-compliant endpoint; 'kind' value is unexpected")
+        throw new EndpointError("non-compliant endpoint; 'kind' value is unexpected")
       }
     })
 }
