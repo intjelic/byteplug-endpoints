@@ -73,7 +73,6 @@ test.before(async t => {
       res.status(401).send()
     else {
       const token = authorization.split(" ")[1]
-      console.log("yolo endpoint", token)
       res.status(200).json({ token: token })
     }
   })
