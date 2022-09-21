@@ -1,6 +1,6 @@
 {
   "name": "byteplug-endpoints",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A HTTP client to work with Byteplug endpoints easily.",
   "main": "index.js",
   "type": "module",
